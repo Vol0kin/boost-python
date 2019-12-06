@@ -1,4 +1,4 @@
-all: hello 
+all: hello basic
 
 .PHONY = all clean
 
@@ -9,6 +9,9 @@ BOOST = -lboost_python3
 
 hello: helloWorld/hello.cpp
 	$(CXX) $< $(INCLUDE) $(BOOST) $(FLAGS) -o helloWorld/hello.so
+
+basic: basicExamples/basic.cpp
+	$(CXX) $< $(INCLUDE) $(BOOST) $(FLAGS) -o basicExamples/basic.so
 
 clean:
 	rm -f ./*/*.so

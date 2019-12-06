@@ -9,5 +9,7 @@ std::string helloWorld()
 BOOST_PYTHON_MODULE(hello)
 {
     using namespace boost::python;
+
+    // Expose 'helloWorld' function as 'greet'
     def("greet", helloWorld);
 }
