@@ -1,0 +1,1 @@
+g++ hello.cpp -I /usr/include/python3.6 -I /usr/include/boost -lboost_python3 -lpython36 -o hello.so -shared -fPIC
