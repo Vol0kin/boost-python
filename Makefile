@@ -1,4 +1,4 @@
-all: hello basic class
+all: hello basic objetos class
 
 .PHONY = all clean
 
@@ -12,6 +12,9 @@ hello: helloWorld/hello.cpp
 
 basic: basicExamples/basic.cpp
 	$(CXX) $< $(INCLUDE) $(BOOST) $(FLAGS) -o basicExamples/basic.so
+
+objetos: basicExamples/objetos.cpp
+	$(CXX) $< $(INCLUDE) $(BOOST) $(FLAGS) -o basicExamples/objetos.so
 
 class: classExamples/claseEjemplo.cpp
 	$(CXX) $< $(INCLUDE) $(BOOST) $(FLAGS) -o classExamples/claseEjemplo.so
