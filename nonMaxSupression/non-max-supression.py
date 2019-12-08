@@ -291,7 +291,7 @@ def laplacian_scale_space(img, ksize, border, N, sigma=1.0, sigma_inc=1.2, boost
         # Incrementar sigma
         sigma *= sigma_inc
     
-    print(f"Total time spend in non-max supression: {total_time}")
+    print(f"Total time spent in non-max supression: {total_time}")
 
     return scale_space, sigma_list
 
@@ -330,30 +330,28 @@ def visualize_laplacian_scale_space(img, sigma, title=None):
 
     plt.show()
 
+visualize = False
 
 # Cargar la imagen en blanco y negro
 cat = read_image('imagenes/cat.bmp', 0)
 
 # Visualizar imagen del gato
-visualize_image(cat, 'Original image')
+if visualize:
+    visualize_image(cat, 'Original image')
 
 
-# Obtener la escala Laplaciana junto con los sigma utilizados en cada nivel
-# Aplicar un kernel de tamaño 5 con borde replicado, creando una escala de 5 niveles
+
 scale, sigma = laplacian_scale_space(cat, 5, cv2.BORDER_REPLICATE, 100, boost=False)
 
-# Para cada elemento del conjunto, visualizar el resultado y las regiones con circulos
-# verdes, los cuales tienen una escala de 15*sigma
-for img, sigma  in zip(scale, sigma):
-    visualize_image(img, r'Non-max supressed image using $\sigma={}$'.format(sigma))
-    visualize_laplacian_scale_space(img, sigma, r'Relevant features using $\sigma={}$'.format(sigma))
+if visualize:
+    for img, sigma  in zip(scale, sigma):
+        visualize_image(img, r'Non-max supressed image using $\sigma={}$'.format(sigma))
+        visualize_laplacian_scale_space(img, sigma, r'Relevant features using $\sigma={}$'.format(sigma))
 
-# Obtener la escala Laplaciana junto con los sigma utilizados en cada nivel
-# Aplicar un kernel de tamaño 5 con borde replicado, creando una escala de 5 niveles
+
 scale, sigma = laplacian_scale_space(cat, 5, cv2.BORDER_REPLICATE, 100, boost=True)
 
-# Para cada elemento del conjunto, visualizar el resultado y las regiones con circulos
-# verdes, los cuales tienen una escala de 15*sigma
-for img, sigma  in zip(scale, sigma):
-    visualize_image(img, r'Non-max supressed image using $\sigma={}$'.format(sigma))
-    visualize_laplacian_scale_space(img, sigma, r'Relevant features using $\sigma={}$'.format(sigma))
+if visualize:
+    for img, sigma  in zip(scale, sigma):
+        visualize_image(img, r'Non-max supressed image using $\sigma={}$'.format(sigma))
+        visualize_laplacian_scale_space(img, sigma, r'Relevant features using $\sigma={}$'.format(sigma))
