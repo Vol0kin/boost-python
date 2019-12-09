@@ -1,7 +1,6 @@
 #include <boost/python.hpp>
 #include <boost/python/numpy.hpp>
 #include <vector>
-#include <iostream>
 
 namespace bp = boost::python;
 namespace np = boost::python::numpy;
