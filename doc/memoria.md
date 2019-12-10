@@ -12,7 +12,6 @@ subtitle: |
 titlepage: true
 toc: true # Añadir índice
 toc-own-page: true
-lang: es-ES
 listings-no-page-break: true
 listings-disable-line-numbers: true
 logo: logoUGR.jpg
@@ -24,7 +23,7 @@ logo-width: 175
 Como bien sabemos, Python es un lenguaje interpretado. Esto tiene ciertas
 ventajas e inconvenientes, siendo uno de dichos inconvenientes la velocidad
 a la hora de realizar grandes cantidades de cómputo, algo en lo que justamente
-destacan los lenguajes compilados.  
+destacan los lenguajes compilados.
 
 El objetivo de este trabajo es presentar una herramienta que nos permite combinar
 ambos tipos de lenguajes con el fin de aprovechar las ventajas de cada uno de
@@ -86,7 +85,7 @@ opciones genéricas que utilizaremos o que tenemos que utilizar son las siguient
 dinámica. Esta es la forma en la que funciona *Boost.Python*: crea bibliotecas
 dinámicas (archivos con extensión ```.so``` en Linux) que funcionan como módulos
 de Python. Son estas bibliotecas las que son importadas y utilizadas posteriormente.
-- ```-fPIC```: Esta opción indica que el código que se genere código independiente
+- ```-fPIC```: Esta opción indica que se tiene que generar código independiente
 de la posición (**Position Independent Code**). De esta forma, el código no
 depende de que esté localizado en alguna posición de memoria específica. Para
 crear una biblioteca dinámica, se tiene que especificar esta opción.
@@ -139,7 +138,7 @@ BOOST_PYTHON_MODULE(basic)
 {
     using namespace boost::python;
 
-    // Expose generic function
+    // Exponer función genérica
     def("generic_sum", genericSum<int>);
     def("generic_sum", genericSum<float>);
     def("generic_sum", genericSum<std::string>);
@@ -555,6 +554,19 @@ print(f"\nDistancia entre los dos puntos: {dist}")
 
 # Suma de dos objetos
 print(f"\nSuma de los dos puntos: {p1 + p2}")
+```
+
+```bash
+Punto 1 Punto3D -> x: 1 y: 1 z: 1
+Punto 2 Punto3D -> x: 1 y: 2 z: 4
+Punto 3 Punto3D -> x: 1 y: 1 z: 1
+
+Punto 1 Punto3D -> x: 1 y: 4 z: 1
+Punto 3 Punto3D -> x: 1 y: 4 z: 1
+
+Distancia entre los dos puntos: 3.605551275463989
+
+Suma de los dos puntos: Punto3D -> x: 2 y: 6 z: 5
 ```
 
 # Comparativa: supresión de no máximos de una imagen
